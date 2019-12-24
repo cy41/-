@@ -305,7 +305,7 @@ public void addViewControllers(ViewControllerRegistry registry){
 
 方法执行流程：
 
-![image-20191122195813825](C:\Users\11979\AppData\Roaming\Typora\typora-user-images\image-20191122195813825.png)
+![image-20191122195813825](SpringBoot%E7%AC%94%E8%AE%B0.assets/image-20191122195813825.png)
 
 简单的页面访问拦截器：
 
@@ -550,7 +550,7 @@ private String res=null;
 
 #### 九、springboot目录结构
 
-![image-20191128095721999](C:\Users\11979\AppData\Roaming\Typora\typora-user-images\image-20191128095721999.png)
+![image-20191128095721999](SpringBoot%E7%AC%94%E8%AE%B0.assets/image-20191128095721999.png)
 
 ```java
 src
