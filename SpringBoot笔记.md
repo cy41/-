@@ -277,7 +277,7 @@ public void addViewControllers(ViewControllerRegistry registry){
 
 #### 十五、@Repository
 
-标注该类为一个DAO类。
+标注该类是一个数据库或其他NoSQL访问类。
 
 #### 十六、拦截器
 
@@ -391,6 +391,22 @@ public class MyConfigurer implements WebMvcConfigurer {
 2. service层进行原子操作的组合
 3. controller依旧
 4. UI层依旧
+
+#### 二十、使用热部署
+
+```xml
+ <dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-devtools</artifactId>
+     <optional>true</optional>
+ </dependency>
+```
+
+#### 二十一、@RestController
+
+相当于Controller与Response结合
+
+
 
 
 
