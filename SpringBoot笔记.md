@@ -590,3 +590,8 @@ pom.xml //各种依赖;
     
 ```
 
+#### 十、mybatis一些东西
+
+1. 插入数据，自增id的回显，useGeneratedKeys="true" keyProperty="class.id"  keyColumn="table.id"
+2. 一对多 collection  一对一 association
+
