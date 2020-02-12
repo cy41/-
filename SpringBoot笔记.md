@@ -371,14 +371,14 @@ public class MyConfigurer implements WebMvcConfigurer {
 
 
 
-#### 十七、@TranSactional
+#### 十七、@Transactional
 
 开启事务，方法运行成功则提交(将数据写入数据库表)，运行失败抛出**runtimeexception及其子类**异常则回滚。
 
 若要指定其他异常回滚则需要添加属性：
 
 ```java
-@TranSactional(rollbackFor = Exception.class)
+@Transactional(rollbackFor = Exception.class)
 ```
 
 #### 十八、@MapperScan("packagepath")
@@ -405,6 +405,30 @@ public class MyConfigurer implements WebMvcConfigurer {
 #### 二十一、@RestController
 
 相当于Controller与Response结合
+
+#### 二十二、@PropertySource
+
+​	若同时存在多个properties文件，使用对应的文件去初始化类中的属性
+
+![image-20200207221915692](SpringBoot%E7%AC%94%E8%AE%B0.assets/image-20200207221915692.png)
+
+
+
+![image-20200207221907112](SpringBoot%E7%AC%94%E8%AE%B0.assets/image-20200207221907112.png)
+
+#### 二十三、条件装配Bean
+
+​	@Conditional，配合Condition（org.springframework.context.annotation.Condition）类
+
+![image-20200207222916136](SpringBoot%E7%AC%94%E8%AE%B0.assets/image-20200207222916136.png)
+
+![image-20200207222930331](SpringBoot%E7%AC%94%E8%AE%B0.assets/image-20200207222930331.png)
+
+​	matches方法用于判断是否满足指定的条件，亦可用于判断当前操作系统等。
+
+#### 二十四、@Profile
+
+​	切换环境
 
 
 
@@ -594,4 +618,16 @@ pom.xml //各种依赖;
 
 1. 插入数据，自增id的回显，useGeneratedKeys="true" keyProperty="class.id"  keyColumn="table.id"
 2. 一对多 collection  一对一 association
+
+#### 十一、Bean的作用域
+
+​	![image-20200207223505534](SpringBoot%E7%AC%94%E8%AE%B0.assets/image-20200207223505534.png)
+
+### 四、 AOP
+
+​	结合约定那一部分代码实现理解。
+
+​	![image-20200209210118310](SpringBoot%E7%AC%94%E8%AE%B0.assets/image-20200209210118310.png)
+
+
 
