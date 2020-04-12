@@ -264,5 +264,107 @@ CRUD：
 3. 操作速度，BSON > JSON。比如，遍历查找：JSON需要扫字符串，而BSON可以直接定位。
 4. 修改，JSON要大动大移， BSON就不需要。
 
+# 六、基本操作
+
+查看当前数据库下集合名称：qshow collections 
+
+​												qdb.getCollectionNames()
+
+删除指定数据库中的集合：qdb.Collection_name.drop()
+
+给指定数据库添加集合并添加文档：db.Collection_name.insert({key:”value”})
+
+查询指定集合中的文档：db.collection_name.find() //返回所有文档
+
+​											db.collection_name.findOne() //返回第一条文档
+
+更新文档：![image-20200411105111491](NoSQL.assets/image-20200411105111491.png)
+
+删除文档：![image-20200411105124604](NoSQL.assets/image-20200411105124604.png)
+
+查看帮助：![image-20200411105145361](NoSQL.assets/image-20200411105145361.png)
+
+执行js代码：![image-20200411105207072](NoSQL.assets/image-20200411105207072.png)
 
 
+
+条件查询：
+
+![image-20200411110749285](NoSQL.assets/image-20200411110749285.png)
+
+and连接：
+
+![image-20200411111104167](NoSQL.assets/image-20200411111104167.png)
+
+OR 条件：
+
+![image-20200411111119549](NoSQL.assets/image-20200411111119549.png)
+
+排序：
+
+![image-20200411111303855](NoSQL.assets/image-20200411111303855.png)
+
+# 七、java中使用
+
+```java
+import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+
+import javax.print.Doc;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        /*
+        * 连接MongoDB;
+        * */
+        MongoClient mc=new MongoClient("localhost",27017);
+        for(String name:mc.listDatabaseNames())
+            System.out.println("dbName: "+name);
+
+        /*
+        * 获取指定数据库;
+        * */
+        MongoDatabase db=mc.getDatabase("admin");
+        for(String name:db.listCollectionNames())
+            System.out.println("Collections: "+name);
+
+        /*
+        * 通过集合名称从db中获取集合;
+        * */
+        MongoCollection<Document> collection=db.getCollection("test");
+
+        /*
+        * 向集合中添加文档
+        * */
+        /*Document document1=new Document("name","z3").append("age",18);
+        Document document2=new Document("name","l4").append("age",19);
+        List<Document> documents=new ArrayList<Document>();
+        documents.add(document1);
+        documents.add(document2);
+        collection.insertMany(documents);*/
+
+        
+        /*
+        * 遍历某集合中的所有文档
+        * 以bson的格式
+        * */
+        FindIterable<Document> it=collection.find();
+        MongoCursor<Document> mongoCursor=it.iterator();
+        while(mongoCursor.hasNext())
+            System.out.println(mongoCursor.next());
+    }
+}
+
+```
+
+![image-20200411121244602](NoSQL.assets/image-20200411121244602.png)
+
+![image-20200411121303361](NoSQL.assets/image-20200411121303361.png)
