@@ -281,7 +281,7 @@ public void addViewControllers(ViewControllerRegistry registry){
 
 #### 十六、拦截器
 
-所有的拦截器都要事先HandIerInterceptor 接口，并且重写方法：
+所有的拦截器都要实现HandIerInterceptor 接口，并且重写方法：
 
 ```java
 	//处理器执行前方法
